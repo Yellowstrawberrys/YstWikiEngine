@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YST WIKI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/md.css">
+    <script src="main.js"></script>
+</head>
+    <body>
+        <div id="sidebar">
+            <div id="logo">
+                <img id="logoImg" src="imgs/logo.png"/>
+                <p id="logoTitle">YST WIKI</p>
+            </div>
+        </div>
+        <div id="infoBar">
+            <div id="searchBarSection">
+                <button id="userIcon" onclick="userInfo()" style="position: absolute; right: 10px; top: 10px; background: none; border: none;">
+                    <img src="imgs/User.svg" style="width: 25px; height: 25px; margin: 0;" alt="user"/>
+                </button>
+                <div id="userInfo"></div>
+            </div>
+        </div>
+        <div id="contentpane">
+            <p id="title" style="margin-bottom: 20px">검색 결과</p>
+            <hr id="splitter"/>
+            <form id="bigSearchBar">
+                <input id="bigSearch" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                <button type="submit" id="bigSearchButton" value="">
+                    <img src="imgs/Search.svg" style="width: 35px; height: 35px; margin: 0" alt="search"/>
+                </button>
+            </form>
+            <div id="contents">
+                <div class="searchResult">
+                    <h2>ww</h2>
+                    <h4>wow</h4>
+                </div>
+                <div class="searchResult">
+                    <h2>ww</h2>
+                    <h4>wow</h4>
+                </div>
+                <div class="searchResult">
+                    <h2>ww</h2>
+                    <h4>wow</h4>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YST WIKI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/md.css">
+    <link rel="stylesheet" href="css/form.css">
+    <script src="main.js"></script>
+</head>
+    <body>
+        <div id="sidebar">
+            <div id="logo">
+                <img id="logoImg" src="imgs/logo.png"/>
+                <p id="logoTitle">YST WIKI</p>
+            </div>
+        </div>
+        <div id="infoBar">
+            <div id="searchBarSection">
+                <form id="searchBar">
+                    <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                    <button type="submit" id="searchButton" value="">
+                        <img src="imgs/Search.svg" style="width: 25px; height: 25px; margin: 0" alt="search"/>
+                    </button>
+                </form>
+                <button id="userIcon" onclick="userInfo()" style="position: absolute; right: 10px; top: 10px; background: none; border: none;">
+                    <img src="imgs/User.svg" style="width: 25px; height: 25px; margin: 0;" alt="user"/>
+                </button>
+                <div id="userInfo">
+                    <button class="docMenuButton" onclick="window.location = '/user/@me/settings'">
+                        설정
+                    </button><br/>
+                    <button class="docMenuButton" onclick="window.location = '/auth/login/'">
+                        로그인
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="contentpane">
+            <p id="title">회원가입</p>
+            <hr id="splitter"/>
+            <div id="contents">
+                <form action="/api/v0/login/" method="post">
+                    <label>
+                        <h4 style="margin-bottom: 0;">유저이름</h4>
+                        <input style="width: 20vw; height: 30px;" type="text" aria-placeholder="유저이름을 입력하시오" placeholder="유저이름을 입력하시오"/>
+                    </label>
+                    <br/>
+                    <label>
+                        <h4 style="margin-bottom: 0;">비밀번호</h4>
+                        <input style="width: 20vw; height: 30px;" type="password" aria-placeholder="비밀번호를 입력하시오" placeholder="비밀번호를 입력하시오"/>
+                    </label>
+                    <br/><br/>
+                    <button class="confirmButton" style="margin-left: 11vw" onclick="window.location = '/auth/signup/'">회원가입</button>
+                    <button class="confirmButton" type="submit" style="margin-left: 10px">로그인</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

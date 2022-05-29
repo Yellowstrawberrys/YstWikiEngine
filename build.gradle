@@ -1,0 +1,38 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'cf.thdisstudio'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/milestone' }
+    maven { url 'https://repo.spring.io/snapshot' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.session:spring-session-core'
+    implementation 'org.commonmark:commonmark:0.18.2'
+    implementation 'org.commonmark:commonmark-ext-autolink:0.18.2'
+    implementation 'org.commonmark:commonmark-ext-gfm-strikethrough:0.18.2'
+    implementation 'org.commonmark:commonmark-ext-gfm-tables:0.18.2'
+    implementation 'org.commonmark:commonmark-ext-ins:0.18.2'
+    implementation 'org.commonmark:commonmark-ext-task-list-items:0.18.2'
+    implementation 'org.commonmark:commonmark-ext-yaml-front-matter:0.18.2'
+    implementation 'org.json:json:20220320'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

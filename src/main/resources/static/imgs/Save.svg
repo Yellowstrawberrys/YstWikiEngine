@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <defs>
+    <clipPath id="clip-Save">
+      <rect width="1000" height="1000"/>
+    </clipPath>
+  </defs>
+  <g id="Save" clip-path="url(#clip-Save)">
+    <g id="Rectangle_1" data-name="Rectangle 1" transform="translate(151 150)" fill="#2284d9" stroke="#707070" stroke-width="1">
+      <path d="M0,0H642a57,57,0,0,1,57,57V701a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" stroke="none"/>
+      <path d="M.5.5H642A56.5,56.5,0,0,1,698.5,57V700.5a0,0,0,0,1,0,0H.5a0,0,0,0,1,0,0V.5A0,0,0,0,1,.5.5Z" fill="none"/>
+    </g>
+    <g id="Rectangle_2" data-name="Rectangle 2" transform="translate(200 150)" fill="#125794" stroke="#707070" stroke-width="1">
+      <path d="M0,0H531a0,0,0,0,1,0,0V159a29,29,0,0,1-29,29H29A29,29,0,0,1,0,159V0A0,0,0,0,1,0,0Z" stroke="none"/>
+      <path d="M.5.5h530a0,0,0,0,1,0,0V159A28.5,28.5,0,0,1,502,187.5H29A28.5,28.5,0,0,1,.5,159V.5A0,0,0,0,1,.5.5Z" fill="none"/>
+    </g>
+    <g id="Rectangle_3" data-name="Rectangle 3" transform="translate(373 150)" fill="#dfdfdf" stroke="#707070" stroke-width="1">
+      <path d="M0,0H358a0,0,0,0,1,0,0V159a29,29,0,0,1-29,29H29A29,29,0,0,1,0,159V0A0,0,0,0,1,0,0Z" stroke="none"/>
+      <path d="M.5.5h357a0,0,0,0,1,0,0V159A28.5,28.5,0,0,1,329,187.5H29A28.5,28.5,0,0,1,.5,159V.5A0,0,0,0,1,.5.5Z" fill="none"/>
+    </g>
+    <g id="Rectangle_4" data-name="Rectangle 4" transform="translate(605 182)" fill="#1d6eb4" stroke="#707070" stroke-width="1">
+      <rect width="78" height="142" stroke="none"/>
+      <rect x="0.5" y="0.5" width="77" height="141" fill="none"/>
+    </g>
+    <g id="Rectangle_5" data-name="Rectangle 5" transform="translate(182 434)" fill="#dfdfdf" stroke="#707070" stroke-linejoin="round" stroke-width="5">
+      <path d="M29,0H608a29,29,0,0,1,29,29V417a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V29A29,29,0,0,1,29,0Z" stroke="none"/>
+      <path d="M29,2.5H608A26.5,26.5,0,0,1,634.5,29V414.5a0,0,0,0,1,0,0H2.5a0,0,0,0,1,0,0V29A26.5,26.5,0,0,1,29,2.5Z" fill="none"/>
+    </g>
+    <line id="Line_1" data-name="Line 1" x2="531" transform="translate(238.5 524.5)" fill="none" stroke="#707070" stroke-width="10"/>
+    <line id="Line_2" data-name="Line 2" x2="531" transform="translate(238.5 597.501)" fill="none" stroke="#707070" stroke-width="10"/>
+    <line id="Line_3" data-name="Line 3" x2="531" transform="translate(238.5 670.502)" fill="none" stroke="#707070" stroke-width="10"/>
+    <line id="Line_4" data-name="Line 4" x2="531" transform="translate(238.5 743.502)" fill="none" stroke="#707070" stroke-width="10"/>
+    <line id="Line_5" data-name="Line 5" x2="531" transform="translate(238.5 816.503)" fill="none" stroke="#707070" stroke-width="10"/>
+  </g>
+</svg>

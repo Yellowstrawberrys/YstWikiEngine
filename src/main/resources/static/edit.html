@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YST WIKI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/md.css">
+    <script src="main.js"></script>
+</head>
+    <body>
+        <div id="sidebar">
+            <div id="logo">
+                <img id="logoImg" src="imgs/logo.png"/>
+                <p id="logoTitle">YST WIKI</p>
+            </div>
+        </div>
+        <div id="infoBar">
+            <div id="searchBarSection">
+                <form id="searchBar">
+                    <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                    <button type="submit" id="searchButton" value="">
+                        <img src="imgs/Search.svg" style="width: 25px; height: 25px; margin: 0" alt="search"/>
+                    </button>
+                </form>
+                <button id="userIcon" onclick="userInfo()" style="position: absolute; right: 10px; top: 10px; background: none; border: none;">
+                    <img src="imgs/User.svg" style="width: 25px; height: 25px; margin: 0;" alt="user"/>
+                </button>
+                <div id="userInfo">
+                    <button class="docMenuButton" onclick="window.location = '/user/@me/settings'">
+                        설정
+                    </button><br/>
+                    <button class="docMenuButton" onclick="window.location = '/auth/login/'">
+                        로그인
+                    </button>
+                </div>
+            </div>
+        </div>
+        <form action="/save/%s" method="post">
+            <div id="contentpane">
+                    <p id="title">'%s' 수정하기</p>
+                    <button type="button" id="moreButton" onclick="docMenu()">
+                        <img src="imgs/More.svg" style="width: 25px; height: 25px; margin: 0" alt="more..."/>
+                    </button>
+                        <div id="docMenu">
+                            <button class="docMenuButton" type="submit">
+                                <img src="imgs/Edit.svg" style="float: left; width: 25px; height: 25px; margin: 0" alt="edit"/>
+                                저장
+                            </button><br/>
+                            <button type="button" class="docMenuButton" onclick="window.location = '/w/%s'">
+                                취소
+                            </button>
+                        </div>
+                        <hr id="splitter"/>
+                        <textarea id="contents" name="contents">%s</textarea>
+            </div>
+            <textarea id="sideContents" name="sideContents">%s</textarea>
+        </form>
+    </body>
+</html>

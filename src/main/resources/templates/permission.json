@@ -1,0 +1,11 @@
+{
+  "GroupPermissions": {
+    "users": {
+      "permissionSet": "rw-",
+      "permissionValue": 6
+    }
+  },
+  "UserPermissions": {
+
+  }
+}

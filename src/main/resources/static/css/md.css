@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;400;600&display=swap');
+
+.contents {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 400;
+}
+
+ * > .contents {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 400;
+}
+
+.contents strong {
+    font-weight: 600;
+}
+
+.contents table {
+    background: white;
+    border-collapse: collapse;
+    border: #dadada 1px solid;
+}
+
+.contents table > thead,tbody > tr > td,th {
+    border: 1px solid #cbcbcb;
+    padding: 10px;
+    text-align: center;
+}
+
+.contents table > thead,tbody > tr:nth-child(even) {
+    background-color: #e6ff78;
+}
+
+#infoBar > .contents > table {
+    width:100%;
+}
+
+blockquote {
+    border-left: 5px deepskyblue solid;
+    background-color: #eeeeee;
+    padding: 1px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    font-weight: 400;
+}
+
+blockquote > p {
+    margin: 5px;
+}
