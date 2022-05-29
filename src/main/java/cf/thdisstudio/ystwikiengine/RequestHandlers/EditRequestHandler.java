@@ -22,7 +22,7 @@ public class EditRequestHandler {
              <html lang="en">
              <head>
                  <meta charset="UTF-8">
-                 <title>문서 수정하기 - YST WIKI</title>
+                 <title>Edit a document - YST WIKI</title>
                  <link rel="stylesheet" href="/css/main.css">
                  <link rel="stylesheet" href="/css/md.css">
                  <script src="/main.js"></script>
@@ -39,7 +39,7 @@ public class EditRequestHandler {
                      <div id="infoBar">
                          <div id="searchBarSection">
                              <form id="searchBar" action="/search/">
-                                 <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                                 <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="Search" value="" aria-label="Search">
                                  <button type="submit" id="searchButton" value="">
                                      <img src="/imgs/Search.svg" style="width: 25px; height: 25px; margin: 0" alt="search"/>
                                  </button>
@@ -52,7 +52,7 @@ public class EditRequestHandler {
                      </div>
                      <form action="/save/%s" method="post">
                          <div id="contentpane">
-                                 <p id="title">'%s' 수정하기</p>
+                                 <p id="title">Edit document '%s'</p>
                                  %s
                      </form>
                  </body>
@@ -66,10 +66,10 @@ public class EditRequestHandler {
                                      <div id="docMenu">
                                          <button class="docMenuButton" type="submit">
                                              <img src="/imgs/Save.svg" style="float: left; width: 25px; height: 25px; margin: 0" alt="save"/>
-                                             저장
+                                             Save
                                          </button><br/>
                                          <button type="button" class="docMenuButton" onclick="window.location = '/w/%s'">
-                                             취소
+                                             Cancel
                                          </button>
                                      </div>
                                      <hr id="splitter"/>

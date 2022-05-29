@@ -22,7 +22,7 @@ public class UploadRequestHandler {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <title>YST WIKI</title>
+                <title>File upload - YST WIKI</title>
                 <link rel="stylesheet" href="/css/main.css">
                 <link rel="stylesheet" href="/css/md.css">
                 <link rel="stylesheet" href="/css/form.css">
@@ -40,7 +40,7 @@ public class UploadRequestHandler {
                     <div id="infoBar">
                         <div id="searchBarSection">
                             <form id="searchBar">
-                                <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                                <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="Search" value="" aria-label="Search">
                                 <button type="submit" id="searchButton" value="">
                                     <img src="/imgs/Search.svg" style="width: 25px; height: 25px; margin: 0" alt="search"/>
                                 </button>
@@ -50,35 +50,35 @@ public class UploadRequestHandler {
                             </button>
                             <div id="userInfo">
                                 <button class="docMenuButton" onclick="window.location = '/user/@me/settings'">
-                                    설정
+                                    Settings
                                 </button><br/>
                                 <button class="docMenuButton" onclick="window.location = '/auth/login/'">
-                                    로그인
+                                    Login
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div id="contentpane">
-                        <p id="title">업로드</p>
+                        <p id="title">File Upload</p>
                         <hr id="splitter"/>
                         <div id="contents" style="margin-left: 50px">
                             %s
                             <form action="/upload/files/" method="post" enctype="multipart/form-data">
-                                <label class="label_bigletter">파일 선택하기</label><br/>
+                                <label class="label_bigletter">Select File</label><br/>
                                 <input type="file" accept="image/*" name="file" required>
                                 <br/><br/>
-                                <label for="fileName" class="label_bigletter">파일 이름적기</label><br/>
+                                <label for="fileName" class="label_bigletter">File name</label><br/>
                                 <input type="text" id="fileName" style="width: 19vw; height: 25px" name="fileName" required>
                                 <br/>
-                                <label for="fileSource" class="label_bigletter">파일 출처</label><br/>
+                                <label for="fileSource" class="label_bigletter">File source</label><br/>
                                 <input type="text" id="fileSource" style="width: 19vw; height: 25px" name="fileSource" required>
                                 <br/><br/>
-                                <label for="copyrighter" class="label_bigletter">저작자</label><br/>
+                                <label for="copyrighter" class="label_bigletter">Copyrighted by</label><br/>
                                 <input type="text" id="copyrighter" style="width: 19vw; height: 25px" name="copyrighter" required><br/>
-                                <label for="copyright" class="label_bigletter">저작권</label><br/>
+                                <label for="copyright" class="label_bigletter">Copyright</label><br/>
                                 <input type="text" id="copyright" style="width: 19vw; height: 25px" name="copyright" required>
                                 <br/><br/>
-                                <button class="confirmButton" type="submit" style="margin-left: 18vw">업로드</button>
+                                <button class="confirmButton" type="submit" style="margin-left: 18vw">Upload</button>
                             </form>
                         </div>
                     </div>

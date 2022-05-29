@@ -28,14 +28,14 @@ public class AuthRequestHandler {
                         <a href="/">
                              <div id="logo">
                                  <img id="logoImg" src="/imgs/logo.png"/>
-                                 <p id="logoTitle">YST WIKI</p>
+                                 <p id="logoTitle">Sign in / Sign up - YST WIKI</p>
                              </div>
                         </a>
                     </div>
                     <div id="infoBar">
                         <div id="searchBarSection">
                             <form id="searchBar">
-                                <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                                <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="Search" value="" aria-label="Search">
                                 <button type="submit" id="searchButton" value="">
                                     <img src="/imgs/Search.svg" style="width: 25px; height: 25px; margin: 0" alt="search"/>
                                 </button>
@@ -47,23 +47,23 @@ public class AuthRequestHandler {
                         </div>
                     </div>
                     <div id="contentpane">
-                        <p id="title">로그인/회원가입</p>
+                        <p id="title">Sign in / Sign up</p>
                         <hr id="splitter"/>
                         <div class="contents">
                             %s
                             <form action="/api/v0/auth/" method="post">
                                 <label>
-                                    <h4 style="margin-bottom: 0;">유저이름</h4>
-                                    <input id="uid" name="uid" style="width: 20vw; height: 30px;" type="text" aria-placeholder="유저이름을 입력하시오" placeholder="유저이름을 입력하시오"/>
+                                    <h4 style="margin-bottom: 0;">Username</h4>
+                                    <input id="uid" name="uid" style="width: 20vw; height: 30px;" type="text" aria-placeholder="Username" placeholder="Username"/>
                                 </label>
                                 <br/>
                                 <label>
-                                    <h4 style="margin-bottom: 0;">비밀번호</h4>
-                                    <input id="pw" name="pw" style="width: 20vw; height: 30px;" type="password" aria-placeholder="비밀번호를 입력하시오" placeholder="비밀번호를 입력하시오"/>
+                                    <h4 style="margin-bottom: 0;">Password</h4>
+                                    <input id="pw" name="pw" style="width: 20vw; height: 30px;" type="password" aria-placeholder="Username" placeholder="Username"/>
                                 </label>
                                 <br/><br/>
-                                <button class="confirmButton" style="margin-left: 11vw" type="submit" name="signup">회원가입</button>
-                                <button class="confirmButton" type="submit" style="margin-left: 10px" name="login">로그인</button>
+                                <button class="confirmButton" style="margin-left: 11vw" type="submit" name="signup">Sign up</button>
+                                <button class="confirmButton" type="submit" style="margin-left: 10px" name="login">Sign in</button>
                             </form>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ public class AuthRequestHandler {
     String err = """
                     <div class="alert">
                       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>\s
-                      <strong>오류</strong> %s
+                      <strong>Error</strong> %s
                     </div>
             """;
 
@@ -83,10 +83,10 @@ public class AuthRequestHandler {
             return loginTemplate.formatted("");
         else{
             return switch (errCode) {
-                case "signup_already" -> loginTemplate.formatted(err.formatted("이미 해당 이름을 가진 계정이 존재합니다."));
-                case "server_err" -> loginTemplate.formatted(err.formatted("서버에서 처리하는중 오류가 발생하였습니다."));
+                case "signup_already" -> loginTemplate.formatted(err.formatted("The username already exists."));
+                case "server_err" -> loginTemplate.formatted(err.formatted("Error occurred during processing your request in our server :("));
                 case "login_failed" ->
-                        loginTemplate.formatted(err.formatted("로그인에 실패하였습니다. 비밀번호 또는 유저아이디가 맞는지 확인해주시길 바랍니다."));
+                        loginTemplate.formatted(err.formatted("Login Failed. Please check your username or password."));
                 default -> loginTemplate.formatted("");
             };
         }

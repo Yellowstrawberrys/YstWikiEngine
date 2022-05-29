@@ -48,7 +48,7 @@ public class DocumentRequestHandler {
                      <div id="infoBar">
                          <div id="searchBarSection">
                              <form id="searchBar" action="/search/">
-                                 <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="" aria-label="검색">
+                                 <input id="search" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="Search" value="" aria-label="Search">
                                  <button type="submit" id="searchButton" value="">
                                      <img src="/imgs/Search.svg" style="width: 25px; height: 25px; margin: 0" alt="search"/>
                                  </button>
@@ -68,10 +68,10 @@ public class DocumentRequestHandler {
                          <div id="docMenu">
                              <button class="docMenuButton" onclick="window.location = '/edit/%s'">
                                  <img src="/imgs/Edit.svg" style="float: left; width: 25px; height: 25px; margin: 0" alt="edit"/>
-                                 수정하기
+                                 Edit
                              </button><br/>
                              <button class="docMenuButton" onclick="window.location = '/history/%s'">
-                                 역사
+                                 History
                              </button>
                          </div>
                          <hr id="splitter"/>

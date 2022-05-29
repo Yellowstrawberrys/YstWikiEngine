@@ -20,7 +20,7 @@ public class SearchRequestHandler {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <title>검색 - YST WIKI</title>
+                <title>Search - YST WIKI</title>
                 <link rel="stylesheet" href="/css/main.css">
                 <link rel="stylesheet" href="/css/md.css">
                 <script src="/main.js"></script>
@@ -43,10 +43,10 @@ public class SearchRequestHandler {
                         </div>
                     </div>
                     <div id="contentpane">
-                        <p id="title" style="margin-bottom: 20px">검색 결과</p>
+                        <p id="title" style="margin-bottom: 20px">Search results</p>
                         <hr id="splitter"/>
                         <form id="bigSearchBar">
-                            <input id="bigSearch" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="검색" value="%s" aria-label="검색">
+                            <input id="bigSearch" maxlength="2048" name="q" type="text" aria-autocomplete="both" aria-haspopup="false" autocapitalize="none" autocomplete="off" autocorrect="off" autofocus="" role="combobox" spellcheck="false" title="Search" value="%s" aria-label="Search">
                             <button type="submit" id="bigSearchButton" value="">
                                 <img src="/imgs/Search.svg" style="width: 35px; height: 35px; margin: 0" alt="search"/>
                             </button>
@@ -70,6 +70,6 @@ public class SearchRequestHandler {
         for(List<String> infos : Data.getSearchResults(URLEncoder.encode(query, StandardCharsets.UTF_8), 20)){
             results += resultTemplate.formatted(infos.get(0), infos.get(0), infos.get(1));
         }
-        return Data.formatLogin(template.formatted(query, (results.isEmpty() ? "검색 결과가 없습니다. <a href=\"/create/%s\">새로 만들까요?</a>".formatted(query) : results)), session.getAttribute("accessToken"));
+        return Data.formatLogin(template.formatted(query, (results.isEmpty() ? "YST WIKI cannot find any results. Do you want to <a href=\"/create/%s\">create a new document?</a>".formatted(query) : results)), session.getAttribute("accessToken"));
     }
 }

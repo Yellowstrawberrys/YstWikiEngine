@@ -22,17 +22,17 @@ public class Data {
 
     static String notLogin = ("<div id=\"userInfo\">\n" +
             "                                <button class=\"docMenuButton\" onclick=\"window.location = '/auth/login/'\">\n" +
-            "                                    로그인\n" +
+            "                                    Login\n" +
             "                                </button>\n" +
             "                            </div>");
 
     static String Login = ("<div id=\"userInfo\">\n" +
-            "                                환영합니다, %s님! <br/>"+
+            "                                Welcome, %s! <br/>"+
             "                                <button class=\"docMenuButton\" onclick=\"window.location = '/user/@me/settings'\">\n" +
-            "                                    설정\n" +
+            "                                    Settings\n" +
             "                                </button><br/>\n" +
             "                                <button class=\"docMenuButton\" onclick=\"window.location = '/auth/logout/'\">\n" +
-            "                                    로그아웃\n" +
+            "                                    Logout\n" +
             "                                </button>\n" +
             "                            </div>");
 
