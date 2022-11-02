@@ -51,9 +51,12 @@ public class CreateRequestHandler {
                              <div id="userInfo"></div>
                          </div>
                      </div>
-                     <div id="contentpane">
-                         <p id="title">'%s' 만들기</p>
-                         %s
+                     <form action="/api/v0/save/%s" method="post">
+                         <div id="contentpane">
+                             <p id="title">'%s' 만들기</p>
+                             %s
+                         </div>
+                     </form>
                  </body>
              </html>
             """;
@@ -74,7 +77,7 @@ public class CreateRequestHandler {
                                      <hr id="splitter"/>
                                      <textarea class="contents" name="contents"></textarea>
                          </div>
-                         <textarea id="sideContents" name="sideContents"></textarea>""";
+                         <textarea id="sideContents" name="side_contents"></textarea>""";
 
     @RequestMapping("/{document}")
     public String main(@PathVariable("document") String title, HttpSession session, HttpServletResponse response) throws SQLException {
@@ -86,24 +89,10 @@ public class CreateRequestHandler {
                 return "";
             }
             if(level == 2 || level == 3 || level > 5)
-                return Data.formatLogin(template.formatted(title, save), session.getAttribute("accessToken"));
+                return Data.formatLogin(template.formatted(URLEncoder.encode(title, StandardCharsets.UTF_8), title, save), session.getAttribute("accessToken"));
             else
-                return Data.formatLogin(template.formatted(title, "<blockquote style=\"border-color: red;\"><p style=\"color: red;\">권한이 부족합니다.</p></blockquote></div>"), session.getAttribute("accessToken"));
+                return Data.formatLogin(template.formatted(URLEncoder.encode(title, StandardCharsets.UTF_8), title, "<blockquote style=\"border-color: red;\"><p style=\"color: red;\">권한이 부족합니다.</p></blockquote></div>"), session.getAttribute("accessToken"));
         }else
             return "N/A";
-    }
-
-    @RequestMapping(value = "/save/{document}", method = RequestMethod.POST)
-    public String main(@PathVariable("document") String title, @RequestBody String request, HttpServletResponse response, HttpSession session) throws SQLException {
-        int level = Data.getPermission(Data.getUserId(session.getAttribute("accessToken")), title);
-        if(level == 0){
-            response.setStatus(403);
-            return "";
-        }
-        if((level == 2 || level == 3 || level > 5) && Data.getDocument(title) == null)
-            Data.createDocument(title, queryToMap(request).get("contents"), "");
-        response.setHeader("Location", "/w/"+ URLEncoder.encode(title, StandardCharsets.UTF_8));
-        response.setStatus(302);
-        return "";
     }
 }

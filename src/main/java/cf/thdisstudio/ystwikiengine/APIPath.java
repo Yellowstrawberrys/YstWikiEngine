@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Map;
@@ -21,7 +23,7 @@ public class APIPath {
         return "{\"releaseType\": \"beta\",\"version\": \"v0.0.0.1\",\"buildNumber\": 20220525}";
     }
 
-    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    @RequestMapping(value = "/auth/", method = RequestMethod.POST)
     public String login(@RequestBody String body, HttpSession session, HttpServletResponse response) {
         try {
             Map<String, String> query = queryToMap(body);
@@ -49,4 +51,31 @@ public class APIPath {
         return "";
     }
 
+    @RequestMapping(value = "/save/{document}", method = RequestMethod.POST)
+    public String save(@PathVariable("document") String title, @RequestBody String request, HttpServletResponse response, HttpSession session) throws SQLException {
+        System.out.println("Save");
+        int level = Data.getPermission(Data.getUserId(session.getAttribute("accessToken")), title);
+        if(level == 0){
+            response.setStatus(403);
+            return "";
+        }else if((level == 2 || level == 3 || level > 5)) {
+            Map<String, String> q = queryToMap(request);
+            System.out.println(Data.getDocument(title) != null);
+            if(Data.getDocument(title) != null)
+                Data.editDocument(title, q.get("contents"), q.get("side_contents"));
+            else
+                Data.createDocument(title, q.get("contents"), q.get("side_contents"));
+        }
+        response.setHeader("Location", "/w/"+ URLEncoder.encode(title, StandardCharsets.UTF_8));
+        response.setStatus(302);
+        return "";
+    }
+
+    @RequestMapping("/logout/")
+    public void logout(HttpSession session, HttpServletResponse response){
+        Data.logout(session.getAttribute("accessToken"));
+        session.removeAttribute("accessToken");
+        response.setStatus(302);
+        response.setHeader("location", "/");
+    }
 }

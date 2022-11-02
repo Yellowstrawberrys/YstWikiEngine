@@ -31,7 +31,7 @@ public class Data {
             "                                <button class=\"docMenuButton\" onclick=\"window.location = '/user/@me/settings'\">\n" +
             "                                    설정\n" +
             "                                </button><br/>\n" +
-            "                                <button class=\"docMenuButton\" onclick=\"window.location = '/auth/logout/'\">\n" +
+            "                                <button class=\"docMenuButton\" onclick=\"window.location = '/api/v0/logout/'\">\n" +
             "                                    로그아웃\n" +
             "                                </button>\n" +
             "                            </div>");

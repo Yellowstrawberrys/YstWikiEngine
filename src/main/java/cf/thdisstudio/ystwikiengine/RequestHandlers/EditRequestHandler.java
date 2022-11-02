@@ -50,7 +50,7 @@ public class EditRequestHandler {
                             <div id="userInfo"></div>
                          </div>
                      </div>
-                     <form action="/save/%s" method="post">
+                     <form action="/api/v0/save/%s" method="post">
                          <div id="contentpane">
                                  <p id="title">'%s' 수정하기</p>
                                  %s
@@ -75,7 +75,7 @@ public class EditRequestHandler {
                                      <hr id="splitter"/>
                                      <textarea class="contents" name="contents">%s</textarea>
                          </div>
-                         <textarea id="sideContents" name="sideContents">%s</textarea>""";
+                         <textarea id="sideContents" name="side_contents">%s</textarea>""";
 
     @RequestMapping("/{document}")
     public String main(@PathVariable("document") String title, HttpSession session, HttpServletResponse response) throws SQLException {

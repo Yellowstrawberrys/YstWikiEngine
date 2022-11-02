@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;400;600&display=swap');
 
+:root{
+    color: white;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -8,6 +12,11 @@ html {
 }
 body{
     margin: 0;
+}
+input{
+    background-color: #171717;
+    border-color: #444444;
+    color: white;
 }
 input:focus{
     outline: none;
@@ -32,19 +41,19 @@ a:hover{
     width: 150px;
     height: 30px;
     border: none;
-    border-bottom: black solid 1px;
-    border-top: black solid 1px;
-    background: white;
+    border-bottom: white solid 1px;
+    border-top: white solid 1px;
+    background: black;
     text-align: center;
     font-size: 20px;
 }
 
 .docMenuButton:hover{
-    background: #eaeaea;
+    background: #181818;
 }
 
 .searchResult{
-    border-bottom: black solid 1px;
+    border-bottom: white solid 1px;
     width: 60vw;
 }
 
@@ -54,7 +63,7 @@ a:hover{
 }
 
 .searchResult > a > h4 {
-    color: gray;
+    color: lightgray;
     margin-left: 10px;
     margin-top: 0;
 }
@@ -70,8 +79,8 @@ a:hover{
     margin-left: 20px;
 }
 #logo{
-    background: white;
-    box-shadow: 0 4px 5px -5px gray;
+    background: #171717;
+    box-shadow: 0 4px 5px -5px #343434;
 }
 #logoImg{
     margin-left: 3.3333333333333333333333333333335vw;
@@ -79,9 +88,9 @@ a:hover{
     height: 10vw;
 }
 #searchBarSection{
-    background: white;
+    background: #171717;
     height: 50px;
-    box-shadow: 0 4px 5px -5px gray;
+    box-shadow: 0 4px 5px -5px #343434;
 }
 #search{
     width: 10vw;
@@ -96,7 +105,7 @@ a:hover{
     display: flex;
     width: 13vw;
     height: 30px;
-    border: solid black 1px;
+    border: solid white 1px;
     margin-left: 10px;
 }
 #bigSearch{
@@ -111,7 +120,7 @@ a:hover{
     display: flex;
     width: 63vw;
     height: 40px;
-    border: solid black 1px;
+    border: solid white 1px;
     margin-left: 30px;
 }
 #searchButton{
@@ -131,19 +140,20 @@ a:hover{
     position: absolute;
     left: 0;
     width: 16.666666666666666666666666666667vw;
-    background: #f0f0f0;
+    background: #2a2a2a;
     min-height: 100vh;
 }
 #sidebar > a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 #contentpane{
     position: absolute;
     left: 16.666666666666666666666666666667vw;
     width: 66.666666666666666666666666666666vw;
     min-height: 100vh;
-    box-shadow: 0 0 5px #d9d9d9;
+    box-shadow: 0 0 5px #343434;
+    background-color: #171717;
 }
 .contents{
     margin-left: 3.4vw;
@@ -165,12 +175,12 @@ a:hover{
     position: absolute;
     right: 0;
     width: 16.666666666666666666666666666667vw;
-    background: #f0f0f0;
+    background: #343434;
     min-height: 100vh;
 }
 #splitter{
     width: 90%;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 #moreButton{
     position: absolute;
@@ -180,26 +190,29 @@ a:hover{
     border: none;
 }
 #docMenu{
-    border: solid black 1px;
+    border: solid white 1px;
     position: absolute;
     top: 80px;
     right: 20px;
     visibility: hidden;
 }
 #userInfo{
-    right: 0; margin: 0; top: 50px; position: absolute; visibility: hidden;background-color: white;
+    right: 0; margin: 0; top: 50px; position: absolute; visibility: hidden;background-color: #171717;
     font-family: 'IBM Plex Sans KR', sans-serif;
     font-weight: 400;
+}
+button{
+    color: white;
 }
 .alert {
     padding: 20px;
     background-color: #f44336;
-    color: white;
+    color: black;
 }
 
 .closebtn {
     margin-left: 15px;
-    color: white;
+    color: black;
     font-weight: bold;
     float: right;
     font-size: 22px;
@@ -209,17 +222,9 @@ a:hover{
 }
 
 .closebtn:hover {
-    color: black;
+    color: white;
 }
 
 .alert.success {
     background-color: #04AA6D;
-}
-
-.description_ref {
-    border: solid 1px;
-    border-radius: 5px;
-    width: fit-content; width: -moz-fit-content;
-    height: fit-content;
-    padding: 10px;
 }

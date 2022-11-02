@@ -30,7 +30,7 @@ public class SaveRequestHandler {
                 return "";
             }
             if((level == 2 || level == 3 || level > 5) && Data.getDocument(title) != null)
-                Data.editDocument(title, parameters.get("contents"), parameters.get("sideContents"));
+                Data.editDocument(title, parameters.get("contents"), parameters.get("side_contents"));
         }
         response.setHeader("Location", "/w/"+URLEncoder.encode(title, StandardCharsets.UTF_8));
         response.setStatus(302);

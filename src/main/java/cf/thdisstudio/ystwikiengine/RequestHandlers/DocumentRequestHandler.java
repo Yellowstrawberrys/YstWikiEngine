@@ -1,6 +1,7 @@
 package cf.thdisstudio.ystwikiengine.RequestHandlers;
 
 import cf.thdisstudio.ystwikiengine.Data;
+import cf.thdisstudio.ystwikiengine.HtmlEncoder;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.commonmark.ext.autolink.AutolinkExtension;
@@ -35,6 +36,7 @@ public class DocumentRequestHandler {
                  <link rel="stylesheet" href="/css/main.css">
                  <link rel="stylesheet" href="/css/md.css">
                  <script src="/main.js"></script>
+                 <script src="/reference.js"></script>
              </head>
                  <body>
                      <div id="sidebar">
@@ -75,7 +77,11 @@ public class DocumentRequestHandler {
                              </button>
                          </div>
                          <hr id="splitter"/>
-                         <div class="contents">%s</div>
+                         <div class="contents">
+                            %s
+                            <br/>
+                            %s
+                         </div>
                      </div>
                  </body>
              </html>
@@ -83,17 +89,17 @@ public class DocumentRequestHandler {
 
     String ogTemplate = """ 
             <!-- HTML Meta Tags -->
-            <meta name="description" content="%s">
-            <meta property="og:url" content="https://wiki.iss.yellowstrawberry.me/">
+            <meta name="description" content="<pre>%s</pre>">
+            <meta property="og:url" content="https://wiki.yellowstrawberry.me/">
             <meta property="og:type" content="website">
             <meta property="og:title" content="%s - YST WIKI">
-            <meta property="og:description" content="%s">
+            <meta property="og:description" content="<pre>%s</pre>">
             <meta property="og:image" content="%s">
             <meta name="twitter:card" content="summary_large_image">
             <meta property="twitter:domain" content="">
-            <meta property="twitter:url" content="https://wiki.iss.yellowstrawberry.me/">
+            <meta property="twitter:url" content="https://wiki.yellowstrawberry.me/">
             <meta name="twitter:title" content="%s - YST WIKI">
-            <meta name="twitter:description" content="%s">
+            <meta name="twitter:description" content="<pre>%s</pre>">
             <meta name="twitter:image" content="%s">
             """;
 
@@ -110,12 +116,22 @@ public class DocumentRequestHandler {
     @RequestMapping("/{document}")
     public String main(@PathVariable("document") String title, HttpSession session, HttpServletResponse response) throws SQLException {
         List<String> infos = Data.getDocument(title);
-        List<String> content = toFilePath(infos.get(1));
+        List<List<String>> content = ystWikiPatch(infos.get(1));
         List<String> subContent = toFilePath(infos.get(2));
         if(infos != null) {
             if(Data.getPermission(Data.getUserId(session.getAttribute("accessToken")), title) > 3) {
-                String s = (content.get(0).length() > 64 ? content.get(0).substring(0, 64) + "..." : content.get(0));
-                String img = (subContent.size() > 1 ? subContent.get(1) : (content.size() > 1 ? subContent.get(1) : "/imgs/logo.png"));
+
+                StringBuilder stb = new StringBuilder();
+
+                for(int i = 1; i < content.get(1).size(); i++) {
+                    if(i == 1)
+                        stb.append("<hr/><br/>" +
+                                "<h1>인용</h1><br/>");
+                    stb.append("<a href=\"#ref_%s\" id=\"rref_%s\">[%s] %s</a><br/>".formatted(i, i, i, content.get(1).get(i)));
+                }
+
+                String s = HtmlEncoder.encodeHtml((content.get(1).get(0).length() > 64 ? content.get(1).get(0).substring(0, 64) + "..." : content.get(1).get(0)));
+                String img = (subContent.size() > 1 ? subContent.get(1) : (content.get(0).size() > 1 ? subContent.get(1) : "/imgs/logo.png"));
                 return Data.formatLogin(template.formatted(
                                 title,
                                 ogTemplate.formatted(
@@ -131,7 +147,8 @@ public class DocumentRequestHandler {
                                 title,
                                 title,
                                 title,
-                                renderer.render(parser.parse(content.get(0)))),
+                                renderer.render(parser.parse(content.get(1).get(0))),
+                                stb.toString()),
                         session.getAttribute("accessToken")
                 );
             }
@@ -143,7 +160,15 @@ public class DocumentRequestHandler {
             return "N/A";
     }
 
+    public List<List<String>> ystWikiPatch(String content) throws SQLException {
+        List<String> filePaths = toFilePath(content);
+        List<String> references = references(filePaths.get(0));
+
+        return Arrays.asList(filePaths, references);
+    }
+
     public List<String> toFilePath(String content) throws SQLException {
+        content = scriptRemover(content);
         List<String> sts = new ArrayList<>();
         Matcher matcher = Pattern.compile("!\\[.*]\\(.*\\)").matcher(content);
         while (matcher.find()) {
@@ -153,5 +178,26 @@ public class DocumentRequestHandler {
         }
         sts.add(0, content);
         return sts;
+    }
+
+    public List<String> references(String content) {
+        List<String> sts = new ArrayList<>();
+        int i = 1;
+        Matcher matcher = Pattern.compile("\\$\\[ref:(.*)]").matcher(content);
+        while (matcher.find()) {
+            content = content.replaceAll("\\$\\[ref:"+matcher.group(1)+"]", "<sup id=\"ref_%s\"><a href=\"#rref_%s\">[%s]</a></sup>".formatted(i, i, i));
+            sts.add(matcher.group(1));
+            i++;
+        }
+        sts.add(0, content);
+        return sts;
+    }
+
+    public String scriptRemover(String content) {
+        Matcher matcher = Pattern.compile("<script(.*)>(.*)</script(.*)>").matcher(content);
+        while (matcher.find()) {
+            content = content.replaceAll("<script%s>%s</script%s>".formatted(matcher.group(1), matcher.group(2), matcher.group(3)), "");
+        }
+        return content;
     }
 }

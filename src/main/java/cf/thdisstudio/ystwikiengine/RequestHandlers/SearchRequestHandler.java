@@ -1,6 +1,8 @@
 package cf.thdisstudio.ystwikiengine.RequestHandlers;
 
 import cf.thdisstudio.ystwikiengine.Data;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,9 +67,14 @@ public class SearchRequestHandler {
             </div>""";
 
     @RequestMapping("/")
-    public String search(@RequestParam("q") String query, HttpSession session) throws SQLException {
+    public String search(@RequestParam("q") String query, HttpSession session, HttpServletResponse rep) throws SQLException {
         String results = "";
         for(List<String> infos : Data.getSearchResults(URLEncoder.encode(query, StandardCharsets.UTF_8), 20)){
+            if(infos.get(0).equals(query)){
+                rep.addHeader("Location", "/w/%s".formatted(URLEncoder.encode(query, StandardCharsets.UTF_8)));
+                rep.setStatus(302);
+                return "";
+            }
             results += resultTemplate.formatted(infos.get(0), infos.get(0), infos.get(1));
         }
         return Data.formatLogin(template.formatted(query, (results.isEmpty() ? "검색 결과가 없습니다. <a href=\"/create/%s\">새로 만들까요?</a>".formatted(query) : results)), session.getAttribute("accessToken"));

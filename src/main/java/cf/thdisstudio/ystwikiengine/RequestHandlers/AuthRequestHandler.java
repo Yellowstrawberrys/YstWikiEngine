@@ -92,12 +92,4 @@ public class AuthRequestHandler {
         }
     }
 
-    @RequestMapping("/logout/")
-    public void logout(HttpSession session, HttpServletResponse response){
-        Data.logout(session.getAttribute("accessToken"));
-        session.removeAttribute("accessToken");
-        response.setStatus(302);
-        response.setHeader("location", "/");
-    }
-
 }
